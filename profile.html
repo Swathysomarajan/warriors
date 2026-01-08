@@ -183,11 +183,21 @@ footer {
 
 <div class="app-container">
     <aside class="sidebar">
-        <a class="logo" href="#">Nex<span>Link</span></a>
-        <button class="nav-item">🏠 Home Feed</button>
-        <button class="nav-item">💬 Messages</button>
-        <button class="nav-item active">👤 Profile</button>
-    </aside>
+    <a class="logo" href="./index.html">Nex<span>Link</span></a>
+
+    <button class="nav-item" onclick="window.location.href='./dashboard.html'">
+        🏠 Home Feed
+    </button>
+
+    <button class="nav-item" onclick="window.location.href='./chat.html'">
+        💬 Messages
+    </button>
+
+    <button class="nav-item" onclick="window.location.href='./profile.html'">
+        👤 Profile
+    </button>
+</aside>
+
 
     <main class="main-view">
         <div class="profile-card">
