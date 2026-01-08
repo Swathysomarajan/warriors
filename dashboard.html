@@ -104,24 +104,19 @@ body{font-family:'Segoe UI',sans-serif;background:var(--bg)}
 
 <div class="app-container">
 
-    <aside class="sidebar">
-    <a href="dashboard.html" class="logo">Nex<span>Link</span></a>
+ <aside class="sidebar">
+    <a class="logo" href="./index.html">Nex<span>Link</span></a>
 
-    <button class="nav-item active" onclick="window.location.href='dashboard.html'">
+    <button class="nav-item" onclick="window.location.href='./dashboard.html'">
         🏠 Home Feed
     </button>
 
-    <!-- ✅ FIXED -->
-    <button class="nav-item" onclick="goToMessages()">
+    <button class="nav-item" onclick="window.location.href='./chat.html'">
         💬 Messages
     </button>
 
-    <button class="nav-item" onclick="window.location.href='profile.html'">
+    <button class="nav-item" onclick="window.location.href='./profile.html'">
         👤 Profile
-    </button>
-
-    <button class="nav-item" style="margin-top:auto;color:#f87171">
-        🚪 Logout
     </button>
 </aside>
 
