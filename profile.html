@@ -1,165 +1,238 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NexLink | Profile</title>
-    <style>
-        :root {
-            --accent: #6366f1;
-            --bg-color: #f1f5f9;
-            --sidebar-width: 260px;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NexLink | Profile</title>
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+<style>
+:root {
+    --accent: #6366f1;
+    --bg-color: #f1f5f9;
+    --sidebar-width: 260px;
+}
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: #1e293b;
-        }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-        /* Layout Structure */
-        .app-container {
-            display: flex;
-            min-height: 100vh;
-        }
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: var(--bg-color);
+    color: #1e293b;
+}
 
-        /* Sidebar Styling */
-        .sidebar {
-            width: var(--sidebar-width);
-            background: white;
-            border-right: 1px solid #e2e8f0;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            position: fixed; /* Keeps sidebar in place */
-            height: 100vh;
-        }
+/* Layout */
+.app-container {
+    display: flex;
+    min-height: 100vh;
+}
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            text-decoration: none;
-            color: #0f172a;
-            margin-bottom: 2rem;
-        }
+/* Sidebar */
+.sidebar {
+    width: var(--sidebar-width);
+    background: white;
+    border-right: 1px solid #e2e8f0;
+    padding: 2rem;
+    position: fixed;
+    height: 100vh;
+}
 
-        .logo span {
-            color: var(--accent);
-        }
+.logo {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #0f172a;
+    text-decoration: none;
+    margin-bottom: 2rem;
+    display: block;
+}
 
-        .nav-item {
-            display: block;
-            text-decoration: none;
-            color: #64748b;
-            padding: 0.8rem 1rem;
-            border-radius: 10px;
-            margin-bottom: 0.5rem;
-            transition: 0.2s;
-            border: none;
-            background: none;
-            text-align: left;
-            width: 100%;
-            cursor: pointer;
-            font-size: 1rem;
-        }
+.logo span { color: var(--accent); }
 
-        .nav-item:hover, .nav-item.active {
-            background: #f1f5f9;
-            color: var(--accent);
-            font-weight: 600;
-        }
+.nav-item {
+    display: block;
+    width: 100%;
+    border: none;
+    background: none;
+    text-align: left;
+    padding: 0.8rem 1rem;
+    margin-bottom: 0.5rem;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #64748b;
+}
 
-        /* Main Viewport Styling */
-        .main-view {
-            flex: 1;
-            margin-left: var(--sidebar-width); /* Offsets content from fixed sidebar */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-        }
+.nav-item:hover,
+.nav-item.active {
+    background: #f1f5f9;
+    color: var(--accent);
+    font-weight: 600;
+}
 
-        .profile-card {
-            background: white;
-            border: 1px solid #eee;
-            padding: 60px;
-            border-radius: 30px;
-            text-align: center;
-            width: 100%;
-            max-width: 500px;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
-        }
+/* Main */
+.main-view {
+    margin-left: var(--sidebar-width);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
-        .profile-pic {
-            width: 130px; 
-            height: 130px; 
-            border: 4px solid var(--accent); 
-            border-radius: 50%; 
-            cursor: pointer;
-            object-fit: cover;
-            transition: transform 0.2s;
-        }
+/* Profile Card */
+.profile-card {
+    background: white;
+    padding: 50px;
+    border-radius: 30px;
+    text-align: center;
+    width: 90%;
+    max-width: 480px;
+    box-shadow: 0 20px 30px rgba(0,0,0,0.08);
+}
 
-        .profile-pic:hover {
-            transform: scale(1.05);
-        }
+.profile-pic {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    border: 4px solid var(--accent);
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
 
-        .stats-container {
-            display: flex; 
-            justify-content: space-around; 
-            border-top: 1px solid #eee; 
-            margin-top: 30px; 
-            padding-top: 20px;
-        }
+.profile-pic:hover {
+    transform: scale(1.08);
+}
 
-        footer {
-            margin-top: 20px;
-            color: #94a3b8;
-            font-size: 0.85rem;
-        }
-    </style>
+.stats {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+.stats div strong {
+    font-size: 1.3rem;
+}
+
+.stats div p {
+    font-size: 0.85rem;
+    color: #64748b;
+}
+
+/* Button */
+.edit-btn {
+    margin-top: 25px;
+    background: var(--accent);
+    color: white;
+    padding: 10px 25px;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+.edit-btn:hover {
+    opacity: 0.9;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal img {
+    width: 300px;
+    border-radius: 50%;
+    border: 5px solid white;
+}
+
+.modal.active {
+    display: flex;
+}
+
+/* Footer */
+footer {
+    margin-top: 20px;
+    font-size: 0.85rem;
+    color: #94a3b8;
+}
+
+/* Responsive */
+@media(max-width: 768px) {
+    .sidebar {
+        display: none;
+    }
+    .main-view {
+        margin-left: 0;
+    }
+}
+</style>
 </head>
+
 <body>
 
-    <div class="app-container">
-        <aside class="sidebar">
-            <a href="#" class="logo">Nex<span>Link</span></a>
-            <a href="#" class="nav-item">🏠 Home Feed</a>
-            <a href="#" class="nav-item">💬 Messages</a>
-            <button class="nav-item active">👤 Profile Settings</button>
-        </aside>
-        
-        <main class="main-view">
-            <div class="profile-card">
-                <img src="https://i.pravatar.cc/150?u=me" 
-                     class="profile-pic" 
-                     alt="Profile Picture"
-                     onclick="alert('Profile picture expanded')">
-                
-                <h2 style="margin-top: 15px;">User Name</h2>
-                <p style="color:#64748b;">Member since 2024</p>
-                
-                <div class="stats-container">
-                    <div>
-                        <strong style="font-size: 1.2rem;">24</strong>
-                        <p style="margin:0; font-size:0.8rem; color: #64748b;">Posts</p>
-                    </div>
-                    <div>
-                        <strong style="font-size: 1.2rem;">1.5k</strong>
-                        <p style="margin:0; font-size:0.8rem; color: #64748b;">Followers</p>
-                    </div>
+<div class="app-container">
+    <aside class="sidebar">
+        <a class="logo" href="#">Nex<span>Link</span></a>
+        <button class="nav-item">🏠 Home Feed</button>
+        <button class="nav-item">💬 Messages</button>
+        <button class="nav-item active">👤 Profile</button>
+    </aside>
+
+    <main class="main-view">
+        <div class="profile-card">
+            <img src="https://i.pravatar.cc/300?u=user"
+                 class="profile-pic"
+                 onclick="openModal()">
+
+            <h2 style="margin-top:15px;">User Name</h2>
+            <p style="color:#64748b;">Member since 2024</p>
+
+            <div class="stats">
+                <div>
+                    <strong>24</strong>
+                    <p>Posts</p>
+                </div>
+                <div>
+                    <strong>1.5k</strong>
+                    <p>Followers</p>
+                </div>
+                <div>
+                    <strong>310</strong>
+                    <p>Following</p>
                 </div>
             </div>
-            <footer>&copy; 2026 NexLink</footer>
-        </main>
-    </div>
+
+            <button class="edit-btn">Edit Profile</button>
+        </div>
+
+        <footer>&copy; 2026 NexLink</footer>
+    </main>
+</div>
+
+<!-- Profile Image Modal -->
+<div class="modal" id="imgModal" onclick="closeModal()">
+    <img src="https://i.pravatar.cc/300?u=user">
+</div>
+
+<script>
+function openModal() {
+    document.getElementById('imgModal').classList.add('active');
+}
+function closeModal() {
+    document.getElementById('imgModal').classList.remove('active');
+}
+</script>
 
 </body>
 </html>
