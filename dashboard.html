@@ -1,79 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"><title>NexLink | Social Feed</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>NexLink | Social Feed</title>
+
+<style>
+:root{
+    --accent:#6366f1;
+    --border:#e5e7eb;
+    --bg:#f1f5f9;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',sans-serif;background:var(--bg)}
+
+.app-container{display:flex;min-height:100vh}
+
+/* Sidebar */
+.sidebar{
+    width:260px;
+    background:white;
+    padding:2rem;
+    border-right:1px solid var(--border);
+    display:flex;
+    flex-direction:column;
+}
+.logo{
+    font-size:1.5rem;
+    font-weight:800;
+    text-decoration:none;
+    color:#0f172a;
+    margin-bottom:2rem;
+}
+.logo span{color:var(--accent)}
+
+.nav-item{
+    display:block;
+    text-decoration:none;
+    background:none;
+    border:none;
+    text-align:left;
+    padding:12px;
+    border-radius:10px;
+    cursor:pointer;
+    color:#64748b;
+    margin-bottom:8px;
+}
+.nav-item:hover,.nav-item.active{
+    background:#eef2ff;
+    color:var(--accent);
+    font-weight:600;
+}
+
+/* Header */
+.header{
+    position:fixed;
+    left:260px;
+    right:0;
+    top:0;
+    height:70px;
+    background:white;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 25px;
+    border-bottom:1px solid var(--border);
+}
+
+/* Main */
+.main-view{
+    margin-left:260px;
+    padding:100px 30px 30px;
+    width:100%;
+}
+
+/* Cards */
+.blog-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+    gap:25px;
+}
+.card{
+    background:white;
+    border-radius:18px;
+    overflow:hidden;
+    border:1px solid var(--border);
+}
+.card-img{
+    height:200px;
+    background-size:cover;
+}
+.card-content{padding:20px}
+
+/* Responsive */
+@media(max-width:768px){
+    .sidebar{display:none}
+    .header{left:0}
+    .main-view{margin-left:0}
+}
+</style>
 </head>
+
 <body>
-    <div class="app-container">
-        <aside class="sidebar">
-            <a href="#" class="logo">Nex<span>Link</span></a>
-            <button class="nav-item active" onclick="showView('home', this)">🏠 Home Feed</button>
-            <a href="#" class="nav-item">💬 Messages</a>
-            <a href="profile.html" class="nav-item">👤 Profile</a>
-            <button onclick="logout()" class="nav-item" style="margin-top:auto; color:#f87171;">🚪 Logout</button>
-        </aside>
 
-        <header class="header">
-            <div class="search-bar">🔍 <input type="text" placeholder="Search NexLink..." onkeyup="search()"></div>
-            <div style="display:flex; align-items:center; gap:12px;">
-                <span style="font-weight:700;">🔔 <small style="background:red; color:white; border-radius:50%; padding:2px 5px; font-size:10px;">2</small></span>
-                <div style="width:40px; height:40px; background:var(--accent); border-radius:12px; color:white; display:flex; align-items:center; justify-content:center; font-weight:700;">U</div>
-            </div>
-        </header>
+<div class="app-container">
 
-        <main class="main-view">
-            <div class="view-content">
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:30px;">
-                    <h1 id="viewTitle">Home Feed</h1>
-                    <button onclick="openWrite()" style="background:var(--accent); color:white; border:none; padding:10px 20px; border-radius:10px; cursor:pointer; font-weight:600;">+ Create Group</button>
+    <aside class="sidebar">
+        <a href="dashboard.html" class="logo">Nex<span>Link</span></a>
+
+        <a href="dashboard.html" class="nav-item active">🏠 Home Feed</a>
+        <!-- ✅ FIXED LINK -->
+        <a href="chat.html" class="nav-item">💬 Messages</a>
+        <a href="profile.html" class="nav-item">👤 Profile</a>
+
+        <button class="nav-item" style="margin-top:auto;color:#f87171">🚪 Logout</button>
+    </aside>
+
+    <header class="header">
+        <div>🔍 <input placeholder="Search NexLink..." style="padding:8px;border-radius:8px;border:1px solid var(--border)"></div>
+        <div>🔔</div>
+    </header>
+
+    <main class="main-view">
+        <h1>Home Feed</h1>
+
+        <div class="blog-grid">
+            <div class="card">
+                <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800')"></div>
+                <div class="card-content">
+                    <small style="color:var(--accent)">TECH</small>
+                    <h3>The Future of AI</h3>
                 </div>
-                <div class="blog-grid" id="mainGrid"></div>
             </div>
+        </div>
+    </main>
 
-            <footer>
-                <p>&copy; 2026 NexLink. All rights reserved.</p>
-                <p>Home • Saved • About • Activity</p>
-            </footer>
-        </main>
-    </div>
+</div>
 
-    <script>
-        const blogs = [
-            { id: 1, cat: "TECH", title: "The Future of AI", img: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800" },
-            { id: 2, cat: "LIFE", title: "Minimalist Living", img: "https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?w=800" }
-        ];
-
-        function showView(view, btn) {
-            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
-            if(btn) btn.classList.add('active');
-            document.getElementById('viewTitle').innerText = view.toUpperCase();
-            const grid = document.getElementById('mainGrid');
-            
-            if(view === 'home') render(blogs);
-            else if(view === 'activity') grid.innerHTML = "<p>• You viewed 'The Future of AI' at 10:30 AM</p>";
-            else grid.innerHTML = `<p>No items in your ${view} list yet.</p>`;
-        }
-
-        function render(list) {
-            const grid = document.getElementById('mainGrid');
-            grid.innerHTML = '';
-            list.forEach(p => {
-                grid.innerHTML += `
-                    <div class="card">
-                        <div style="height:200px; background-image:url('${p.img}'); background-size:cover;"></div>
-                        <div style="padding:20px;">
-                            <span style="color:var(--accent); font-weight:800; font-size:0.7rem;">${p.cat}</span>
-                            <h3 style="margin:10px 0;">${p.title}</h3>
-                            <div style="display:flex; justify-content:space-between; margin-top:15px;">
-                                <button onclick="alert('Liked!')" style="border:none; background:none; cursor:pointer;">❤ Like</button>
-                                <button onclick="alert('Comment box opened')" style="border:none; background:none; cursor:pointer;">💬 Comment</button>
-                            </div>
-                        </div>
-                    </div>`;
-            });
-        }
-        render(blogs);
-    </script>
 </body>
 </html>
