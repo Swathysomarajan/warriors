@@ -105,15 +105,26 @@ body{font-family:'Segoe UI',sans-serif;background:var(--bg)}
 <div class="app-container">
 
     <aside class="sidebar">
-        <a href="dashboard.html" class="logo">Nex<span>Link</span></a>
+    <a href="dashboard.html" class="logo">Nex<span>Link</span></a>
 
-        <a href="dashboard.html" class="nav-item active">🏠 Home Feed</a>
-        <!-- ✅ FIXED LINK -->
-        <a href="chat.html" class="nav-item">💬 Messages</a>
-        <a href="profile.html" class="nav-item">👤 Profile</a>
+    <button class="nav-item active" onclick="window.location.href='dashboard.html'">
+        🏠 Home Feed
+    </button>
 
-        <button class="nav-item" style="margin-top:auto;color:#f87171">🚪 Logout</button>
-    </aside>
+    <!-- ✅ FIXED -->
+    <button class="nav-item" onclick="goToMessages()">
+        💬 Messages
+    </button>
+
+    <button class="nav-item" onclick="window.location.href='profile.html'">
+        👤 Profile
+    </button>
+
+    <button class="nav-item" style="margin-top:auto;color:#f87171">
+        🚪 Logout
+    </button>
+</aside>
+
 
     <header class="header">
         <div>🔍 <input placeholder="Search NexLink..." style="padding:8px;border-radius:8px;border:1px solid var(--border)"></div>
