@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NexLink | Sign Up</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .auth-container { 
+            display: flex; align-items: center; justify-content: center; 
+            height: 100vh; background: var(--dark); 
+        }
+        .auth-card { 
+            background: white; padding: 40px; border-radius: 24px; 
+            width: 350px; text-align: center; box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        .auth-input { 
+            width: 100%; padding: 12px; margin: 10px 0; border: 1px solid var(--border); 
+            border-radius: 10px; box-sizing: border-box; font-family: inherit;
+        }
+        .auth-btn { 
+            width: 100%; background: var(--primary); color: white; border: none; 
+            padding: 14px; border-radius: 10px; cursor: pointer; font-weight: 700; margin-top: 10px;
+        }
+    </style>
+</head>
+<body style="display: block; margin: 0;">
+    <div class="auth-container">
+        <div class="auth-card">
+            <h2 class="logo" style="color: var(--dark); margin-bottom: 10px;">Nex<span>Link</span></h2>
+            <p style="color: var(--text-muted); margin-bottom: 25px;">Create your account</p>
+            
+            <form id="signupForm">
+                <input type="text" id="newName" class="auth-input" placeholder="Full Name" required>
+                <input type="email" id="newEmail" class="auth-input" placeholder="Email Address" required>
+                <input type="password" id="newPass" class="auth-input" placeholder="Password" required>
+                <button type="submit" class="auth-btn">Sign Up</button>
+            </form>
+            
+            <p style="margin-top: 20px; font-size: 0.9rem;">
+                Already have an account? <a href="login.html" style="color: var(--primary); text-decoration: none; font-weight: 600;">Login</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const userData = {
+                name: document.getElementById('newName').value,
+                email: document.getElementById('newEmail').value,
+                pass: document.getElementById('newPass').value
+            };
+            
+            // Save to Mock Database (LocalStorage)
+            localStorage.setItem('userDB', JSON.stringify(userData));
+            alert("Account created successfully! Please login.");
+            window.location.href = 'login.html';
+        });
+    </script>
+</body>
+</html>
