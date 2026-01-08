@@ -1,30 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"><title>NexLink | Profile</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexLink | Profile</title>
+    <style>
+        :root {
+            --accent: #6366f1;
+            --bg-color: #f1f5f9;
+            --sidebar-width: 260px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: #1e293b;
+        }
+
+        /* Layout Structure */
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Styling */
+        .sidebar {
+            width: var(--sidebar-width);
+            background: white;
+            border-right: 1px solid #e2e8f0;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            position: fixed; /* Keeps sidebar in place */
+            height: 100vh;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            text-decoration: none;
+            color: #0f172a;
+            margin-bottom: 2rem;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-item {
+            display: block;
+            text-decoration: none;
+            color: #64748b;
+            padding: 0.8rem 1rem;
+            border-radius: 10px;
+            margin-bottom: 0.5rem;
+            transition: 0.2s;
+            border: none;
+            background: none;
+            text-align: left;
+            width: 100%;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            background: #f1f5f9;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* Main Viewport Styling */
+        .main-view {
+            flex: 1;
+            margin-left: var(--sidebar-width); /* Offsets content from fixed sidebar */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .profile-card {
+            background: white;
+            border: 1px solid #eee;
+            padding: 60px;
+            border-radius: 30px;
+            text-align: center;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+        }
+
+        .profile-pic {
+            width: 130px; 
+            height: 130px; 
+            border: 4px solid var(--accent); 
+            border-radius: 50%; 
+            cursor: pointer;
+            object-fit: cover;
+            transition: transform 0.2s;
+        }
+
+        .profile-pic:hover {
+            transform: scale(1.05);
+        }
+
+        .stats-container {
+            display: flex; 
+            justify-content: space-around; 
+            border-top: 1px solid #eee; 
+            margin-top: 30px; 
+            padding-top: 20px;
+        }
+
+        footer {
+            margin-top: 20px;
+            color: #94a3b8;
+            font-size: 0.85rem;
+        }
+    </style>
 </head>
 <body>
+
     <div class="app-container">
         <aside class="sidebar">
-            <a href="dashboard.html" class="logo">Nex<span>Link</span></a>
-            <a href="dashboard.html" class="nav-item">🏠 Home Feed</a>
-            <a href="chat.html" class="nav-item">💬 Messages</a>
+            <a href="#" class="logo">Nex<span>Link</span></a>
+            <a href="#" class="nav-item">🏠 Home Feed</a>
+            <a href="#" class="nav-item">💬 Messages</a>
             <button class="nav-item active">👤 Profile Settings</button>
         </aside>
         
-        <main class="main-view" style="align-items:center;">
-            <div style="background:white; border:1px solid #eee; padding:60px; border-radius:30px; text-align:center; width:500px;">
-                <img src="https://i.pravatar.cc/150?u=me" style="width:130px; height:130px; border:4px solid var(--accent); border-radius:50%; cursor:pointer;" onclick="alert('Profile picture expanded')">
-                <h2>User Name</h2>
+        <main class="main-view">
+            <div class="profile-card">
+                <img src="https://i.pravatar.cc/150?u=me" 
+                     class="profile-pic" 
+                     alt="Profile Picture"
+                     onclick="alert('Profile picture expanded')">
+                
+                <h2 style="margin-top: 15px;">User Name</h2>
                 <p style="color:#64748b;">Member since 2024</p>
-                <div style="display:flex; justify-content:space-around; border-top:1px solid #eee; margin-top:30px; padding-top:20px;">
-                    <div><strong>24</strong><p style="margin:0; font-size:0.8rem;">Posts</p></div>
-                    <div><strong>1.5k</strong><p style="margin:0; font-size:0.8rem;">Followers</p></div>
+                
+                <div class="stats-container">
+                    <div>
+                        <strong style="font-size: 1.2rem;">24</strong>
+                        <p style="margin:0; font-size:0.8rem; color: #64748b;">Posts</p>
+                    </div>
+                    <div>
+                        <strong style="font-size: 1.2rem;">1.5k</strong>
+                        <p style="margin:0; font-size:0.8rem; color: #64748b;">Followers</p>
+                    </div>
                 </div>
             </div>
             <footer>&copy; 2026 NexLink</footer>
         </main>
     </div>
+
 </body>
 </html>
