@@ -1,43 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"><title>NexLink | Messages</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        .chat-layout { display: grid; grid-template-columns: 320px 1fr; height: 75vh; background: white; border-radius: 20px; border: 1px solid var(--border); overflow: hidden; }
-        .contact-item { padding: 15px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 12px; cursor: pointer; }
-        .avatar-chat { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; cursor: pointer; }
-    </style>
+<meta charset="UTF-8">
+<title>NexLink | Messages</title>
+
+<style>
+:root{
+    --accent:#6366f1;
+    --border:#e5e7eb;
+    --bg:#f1f5f9;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',sans-serif;background:var(--bg)}
+
+.app-container{display:flex;min-height:100vh}
+
+/* Sidebar */
+.sidebar{
+    width:260px;
+    background:white;
+    padding:2rem;
+    border-right:1px solid var(--border);
+}
+.logo{
+    font-size:1.5rem;
+    font-weight:800;
+    text-decoration:none;
+    color:#0f172a;
+    display:block;
+    margin-bottom:2rem;
+}
+.logo span{color:var(--accent)}
+.nav-item{
+    display:block;
+    padding:12px;
+    margin-bottom:8px;
+    text-decoration:none;
+    color:#64748b;
+    border-radius:10px;
+}
+.nav-item.active,.nav-item:hover{
+    background:#eef2ff;
+    color:var(--accent);
+    font-weight:600;
+}
+
+/* Chat */
+.chat-layout{
+    display:grid;
+    grid-template-columns:320px 1fr;
+    height:85vh;
+    background:white;
+    border-radius:20px;
+    border:1px solid var(--border);
+    overflow:hidden;
+}
+.contact{
+    padding:15px;
+    border-bottom:1px solid var(--border);
+    display:flex;
+    gap:12px;
+}
+.avatar{
+    width:45px;
+    height:45px;
+    border-radius:50%;
+}
+
+/* Main */
+.main-view{
+    flex:1;
+    padding:30px;
+}
+
+/* Responsive */
+@media(max-width:768px){
+    .sidebar{display:none}
+    .chat-layout{grid-template-columns:1fr}
+}
+</style>
 </head>
+
 <body>
-    <div class="app-container">
-        <aside class="sidebar">
-            <a href="dashboard.html" class="logo">Nex<span>Link</span></a>
-            <a href="dashboard.html" class="nav-item">🏠 Home Feed</a>
-            <button class="nav-item active">💬 Messages</button>
-            <a href="profile.html" class="nav-item">👤 Profile</a>
-        </aside>
 
-        <header class="header">
-            <div class="search-bar">🔍 <input type="text" placeholder="Search contacts..."></div>
-            <button onclick="alert('Group Created!')" style="background:var(--accent); color:white; border:none; padding:10px 20px; border-radius:10px; cursor:pointer; font-weight:600;">+ Create Group</button>
-        </header>
+<div class="app-container">
 
-        <main class="main-view">
-            <div class="chat-layout">
-                <div style="border-right: 1px solid var(--border); overflow-y:auto;">
-                    <div class="contact-item">
-                        <img src="https://i.pravatar.cc/150?u=1" class="avatar-chat" onclick="alert('Viewing full profile picture')">
-                        <div><b>Sarah Jenkins</b><br><small>Active now</small></div>
+    <aside class="sidebar">
+        <a href="dashboard.html" class="logo">Nex<span>Link</span></a>
+        <a href="dashboard.html" class="nav-item">🏠 Home Feed</a>
+        <a href="chat.html" class="nav-item active">💬 Messages</a>
+        <a href="profile.html" class="nav-item">👤 Profile</a>
+    </aside>
+
+    <main class="main-view">
+        <div class="chat-layout">
+            <div>
+                <div class="contact">
+                    <img src="https://i.pravatar.cc/150?u=1" class="avatar">
+                    <div>
+                        <b>Sarah Jenkins</b><br>
+                        <small>Active now</small>
                     </div>
                 </div>
-                <div style="display:flex; flex-direction:column; padding:20px;">
-                    <div style="flex:1; background:#f8fafc; border-radius:15px; padding:15px;"><p><b>Sarah:</b> Did you see the new UI updates?</p></div>
-                    <div style="display:flex; gap:10px; margin-top:15px;"><input type="text" style="flex:1; padding:12px; border:1px solid #ddd; border-radius:10px;"><button style="background:var(--accent); color:white; border:none; padding:12px 25px; border-radius:10px;">Send</button></div>
+            </div>
+
+            <div style="display:flex;flex-direction:column;padding:20px">
+                <div style="flex:1;background:#f8fafc;border-radius:15px;padding:15px">
+                    <p><b>Sarah:</b> Did you see the new UI updates?</p>
+                </div>
+                <div style="display:flex;gap:10px;margin-top:15px">
+                    <input style="flex:1;padding:12px;border-radius:10px;border:1px solid var(--border)">
+                    <button style="background:var(--accent);color:white;border:none;padding:12px 25px;border-radius:10px">
+                        Send
+                    </button>
                 </div>
             </div>
-            <footer>&copy; 2026 NexLink Messaging</footer>
-        </main>
-    </div>
+        </div>
+    </main>
+
+</div>
+
 </body>
 </html>
