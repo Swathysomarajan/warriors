@@ -1,63 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Styled Web Page</title>
-    
+    <meta charset="UTF-8"><title>NexLink | Connect</title>
+    <link rel="stylesheet" href="style.css">
     <style>
-        /* This is where the CSS begins */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            color: #333;
-            line-height: 1.6;
-            padding: 40px;
-            max-width: 800px;
-            margin: auto;
-        }
-
-        h1 {
-            color: #2c3e50;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 10px;
-        }
-
-        p {
-            font-size: 18px;
-        }
-
-        ul {
-            background: #fff;
-            padding: 20px 40px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        a {
-            color: #3498db;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        a:hover {
-            text-decoration: underline;
-            color: #2980b9;
-        }
+        .hero { background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=1200'); background-size: cover; height: 100vh; display: flex; align-items: center; justify-content: center; color: white; text-align: center; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
     </style>
 </head>
-<body>
-
-    <h1>Welcome to My Styled Website</h1>
-    <p>With just a little bit of CSS, we've turned a plain text document into a designed page!</p>
-
-    <ul>
-        <li>Added a custom font (Arial)</li>
-        <li>Centered the content on the screen</li>
-        <li>Added a subtle shadow to this list</li>
-    </ul>
-
-    <p>Check out <a href="https://www.google.com">this link</a> to see the hover effect.</p>
-
+<body style="display: block;">
+    <section class="hero">
+        <div>
+            <h1 style="font-size: 5rem; margin:0; animation: float 4s infinite ease-in-out;">Nex<span>Link</span></h1>
+            <p style="font-size: 1.5rem; margin: 20px 0 40px;">Your world, connected in a click.</p>
+            <a href="signup.html" class="nav-item active" style="display:inline-block; background:var(--primary); color:white; padding:18px 45px; border-radius:50px;">Get Started</a>
+            <a href="login.html" style="color:white; margin-left:25px; text-decoration:none; font-weight:bold;">Login</a>
+        </div>
+    </section>
 </body>
 </html>
